@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#121a33"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#22d3a7"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="320" rx="18" fill="url(#bg)"/>
+  <!-- subtle grid -->
+  <g stroke="#1e2a4a" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="80" x2="1200" y2="80"/><line x1="0" y1="160" x2="1200" y2="160"/><line x1="0" y1="240" x2="1200" y2="240"/>
+  </g>
+
+  <text x="60" y="110" fill="#e6edf7" font-size="46" font-weight="800">⚡ Mirror Trading System</text>
+  <text x="62" y="152" fill="#9fb3d1" font-size="22" font-weight="500">Low-latency retailer → operator copy pipeline for index options</text>
+
+  <!-- pills -->
+  <g font-size="15" font-weight="700">
+    <rect x="62" y="184" width="180" height="34" rx="17" fill="#0e2233" stroke="#1f6feb"/>
+    <text x="152" y="206" fill="#58a6ff" text-anchor="middle">~100 ms end-to-end</text>
+    <rect x="254" y="184" width="210" height="34" rx="17" fill="#0e2a22" stroke="#22d3a7"/>
+    <text x="359" y="206" fill="#34e0b0" text-anchor="middle">3 redundant reliability layers</text>
+    <rect x="476" y="184" width="196" height="34" rx="17" fill="#2a210e" stroke="#e0a800"/>
+    <text x="574" y="206" fill="#f0c33a" text-anchor="middle">fail-safe kill switch</text>
+  </g>
+
+  <!-- flow nodes -->
+  <g>
+    <!-- broker -->
+    <circle cx="820" cy="160" r="34" fill="#0e2233" stroke="url(#accent)" stroke-width="2"/>
+    <text x="820" y="165" fill="#cfe6ff" font-size="14" text-anchor="middle">Broker</text>
+    <!-- master -->
+    <rect x="900" y="86" width="150" height="56" rx="12" fill="#101a33" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+    <text x="975" y="112" fill="#e6edf7" font-size="16" font-weight="700" text-anchor="middle">Master</text>
+    <text x="975" y="130" fill="#7fa8d8" font-size="12" text-anchor="middle">watch retailer</text>
+    <!-- follower -->
+    <rect x="900" y="178" width="150" height="56" rx="12" fill="#0e2a22" stroke="#22d3a7" stroke-width="2" filter="url(#glow)"/>
+    <text x="975" y="204" fill="#e6edf7" font-size="16" font-weight="700" text-anchor="middle">Follower</text>
+    <text x="975" y="222" fill="#79d8bd" font-size="12" text-anchor="middle">act on operator</text>
+
+    <g stroke="url(#accent)" stroke-width="2.5" fill="none" marker-end="url(#arrow)">
+      <path d="M854 150 C 885 130, 890 120, 900 114"/>
+      <path d="M975 142 L 975 178"/>
+      <path d="M900 206 C 870 206, 856 190, 852 176"/>
+    </g>
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="#22d3a7"/>
+      </marker>
+    </defs>
+    <text x="1040" y="162" fill="#6b7fa6" font-size="12">signed · HMAC</text>
+  </g>
+
+  <rect x="0.5" y="0.5" width="1199" height="319" rx="18" fill="none" stroke="#243356"/>
+</svg>

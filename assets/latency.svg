@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+  <rect width="1200" height="360" rx="16" fill="#0b1020" stroke="#243356"/>
+  <text x="40" y="50" fill="#e6edf7" font-size="26" font-weight="800">Where the milliseconds go</text>
+  <text x="40" y="78" fill="#8ea3c6" font-size="15">After optimisation, the only meaningful cost left is the broker accepting the order.</text>
+
+  <!-- scale -->
+  <g stroke="#1e2a4a" stroke-width="1">
+    <line x1="60" y1="120" x2="60" y2="250"/>
+    <line x1="60" y1="250" x2="1140" y2="250"/>
+  </g>
+  <g fill="#5e72a0" font-size="12" text-anchor="middle">
+    <text x="60" y="272">0</text><text x="330" y="272">50 ms</text><text x="600" y="272">100 ms</text><text x="870" y="272">150 ms</text><text x="1140" y="272">~175 ms</text>
+  </g>
+
+  <!-- stacked hop bar (scale: ~6.17 px per ms over 1080px for 175ms) -->
+  <!-- master forward 15ms -->
+  <g>
+    <rect x="60" y="150" width="93" height="48" fill="#38bdf8" rx="3"/>
+    <text x="106" y="138" fill="#9fc6ef" font-size="12" text-anchor="middle">master</text>
+    <text x="106" y="179" fill="#04131f" font-size="12" font-weight="700" text-anchor="middle">15</text>
+  </g>
+  <!-- network 7ms -->
+  <g>
+    <rect x="153" y="150" width="43" height="48" fill="#8b5cf6" rx="3"/>
+    <text x="175" y="138" fill="#c3b5ef" font-size="12" text-anchor="middle">net</text>
+    <text x="175" y="179" fill="#140a26" font-size="12" font-weight="700" text-anchor="middle">7</text>
+  </g>
+  <!-- follower convergence ~0 (microseconds) sliver -->
+  <g>
+    <rect x="196" y="150" width="6" height="48" fill="#22d3a7" rx="2"/>
+    <text x="230" y="138" fill="#79d8bd" font-size="12" text-anchor="middle">convergence ≈ µs</text>
+  </g>
+  <!-- place_order 50-150ms (the floor) -->
+  <g>
+    <rect x="202" y="150" width="620" height="48" fill="#f0c33a" rx="3"/>
+    <rect x="202" y="150" width="620" height="48" fill="url(#hatch)" rx="3" opacity="0.25"/>
+    <text x="512" y="138" fill="#f0c33a" font-size="13" font-weight="700" text-anchor="middle">broker place_order — the physical floor</text>
+    <text x="512" y="180" fill="#2a2104" font-size="13" font-weight="800" text-anchor="middle">50 – 150 ms</text>
+  </g>
+  <defs>
+    <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="4" height="8" fill="#000"/>
+    </pattern>
+  </defs>
+
+  <!-- before/after callout -->
+  <g>
+    <rect x="60" y="292" width="520" height="44" rx="10" fill="#2a1414" stroke="#c0392b"/>
+    <text x="80" y="319" fill="#ff8f85" font-size="14" font-weight="700">BEFORE:  seconds — REST position + margin reads on every event</text>
+    <rect x="600" y="292" width="540" height="44" rx="10" fill="#0e2a22" stroke="#22d3a7"/>
+    <text x="620" y="319" fill="#34e0b0" font-size="14" font-weight="700">AFTER:  ~75–175 ms — in-memory cache, exits skip margin</text>
+  </g>
+</svg>

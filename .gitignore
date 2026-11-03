@@ -1,0 +1,16 @@
+# This is a documentation-only repository. Never add live artifacts here.
+# Secrets, credentials, infra config, and runtime data must NEVER be committed.
+*.env
+.env
+account.json
+*.key
+*.crt
+*.pem
+*secret*
+*token*
+mirror_config.json
+*.sqlite
+*.db
+*.log
+__pycache__/
+.DS_Store
